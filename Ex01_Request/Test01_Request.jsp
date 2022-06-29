@@ -1,4 +1,3 @@
-<%@page import="javax.servlet.jsp.tagext.TryCatchFinally"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,42 +5,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<style type="text/css">
-		*{
-			background-color: black;
-			color : white;
-		}
-	</style>
 </head>
 <body>
- <h1>파라메터 100개 보내기</h1>
-	 <form action="../Test01_Request" method="get">
- 	<%for(int i =0; i < 100; i++){ %>
-	  	<input type="text" name="num<%=i %>" value="<%=i %>">
-	<%} %>
-	 		<div><input type = "submit" value="전송(get)"></div>
-	</form>
+	<form action="../Test01_Request" method="get">
+		<!-- 인풋타입 텍스트 주고 이름하고 아이디 비밀번호 입력받게만들기  -->
+		<%for (int i = 0 ; i <100 ; i ++){ %>
+		<p>파라메터<%=i %> : <input type="text" name="param<%=i %>" value="param<%=i%>"></p>
+		<%} %>
+	<input type="submit">
+	</form>	
 	
-	<!-- get방식을 이용해서 Request를 사용할 수 가 있음. -->	
+	<!--  get방식을 이용해서 Request를 사용할수가있음 -->
 	<% if(request.getParameter("cnt") != null){
+		int cnt = Integer.parseInt(request.getParameter("cnt") );
+	%>
 		
-		int cnt = Integer.parseInt(request.getParameter("cnt"));
-			
-		
-	}%>
-	
- <h1>파라메터 100개 보내기</h1>
-	 <form action="../Test02_Request" method="get">
-	 
- 	<%
- 	int cnt=10;
- 	for(int i =0; i < cnt; i++){ %>
-	  	<input type="text" name="num<%=i %>" value="<%=i %>">
+
+	<form action="../Test02_Request" method="get">
+		<!-- 인풋타입 텍스트 주고 이름하고 아이디 비밀번호 입력받게만들기  -->
+		<%for (int i = 0 ; i <cnt ; i ++){ %>
+		<p>파라메터<%=i %> : <input type="text" name="param<%=i %>" value="param<%=i%>"></p>
+		<%} %>
+		<input type="text" name="cnt" value="<%=cnt%>">
+	<input type="submit">
+	</form>	
 	<%} %>
-	<input type="text" name = "cnt" value="30">
-	 		<div><input type = "submit" value="전송(get)"></div>
-	</form>
-	
 	
 </body>
 </html>
