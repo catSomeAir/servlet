@@ -170,6 +170,9 @@ public class StudentDAO {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, student_no);
 			ps.setString(2, user_id);
+			
+			
+			
 			return ps.executeUpdate();
 			
 		} catch (SQLException e) {
